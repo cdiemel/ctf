@@ -79,28 +79,28 @@ def primeFactors(n):
     return p, q, phi
 
 
-i = 0
-p,q,n,e = 0,0,0,0
-cipher = []
-while i < len(sys.argv):
-    increment = 1
-    if sys.argv[i][0] == '-':
-        if sys.argv[i][1] == 'p':
-            p = int(sys.argv[i+1])
-            increment=increment+1
-        if sys.argv[i][1] == 'q':
-            q = int(sys.argv[i+1])
-            increment=increment+1
-        if sys.argv[i][1] == 'n':
-            n = int(sys.argv[i+1])
-            increment=increment+1
-        if sys.argv[i][1] == 'e':
-            e = int(sys.argv[i+1])
-            increment=increment+1
-        if sys.argv[i][1] == 'c':
-            cipher = sys.argv[i+1].split(" ")
-            increment=increment+1
-    i = i+increment
+# i = 0
+# p,q,n,e = 0,0,0,0
+# cipher = []
+# while i < len(sys.argv):
+#     increment = 1
+#     if sys.argv[i][0] == '-':
+#         if sys.argv[i][1] == 'p':
+#             p = int(sys.argv[i+1])
+#             increment=increment+1
+#         if sys.argv[i][1] == 'q':
+#             q = int(sys.argv[i+1])
+#             increment=increment+1
+#         if sys.argv[i][1] == 'n':
+#             n = int(sys.argv[i+1])
+#             increment=increment+1
+#         if sys.argv[i][1] == 'e':
+#             e = int(sys.argv[i+1])
+#             increment=increment+1
+#         if sys.argv[i][1] == 'c':
+#             cipher = sys.argv[i+1].split(" ")
+#             increment=increment+1
+#     i = i+increment
 
 # p       = args.p
 # q       = args.p
