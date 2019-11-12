@@ -1,4 +1,8 @@
-
+__author__ = 'C. Diemel'
+__version__ = '1.0.0'
+__name__ = 'simple_caesar.py'
+__license__ = 'GPL2'
+__description__ = 'Caesar Cipher include for simple_cipher.'
 
 from pycipher import Caesar
 

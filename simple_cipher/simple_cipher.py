@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-# _author_ C. Diemel
+__author__ = 'C. Diemel'
+__version__ = '1.0.0'
+__name__ = 'simple_cipher.py'
+__license__ = 'GPL2'
+__description__ = 'Script to attempt to decode simple text ciphers. Caesar, RailFence, etc.'
 
 
 import sys

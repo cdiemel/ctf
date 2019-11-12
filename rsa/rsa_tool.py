@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+__author__ = 'C. Diemel'
+__version__ = '1.0.0'
+__name__ = 'rsa_tool.py'
+__license__ = 'GPL2'
+__description__ = 'Script to attempt to encode/decode RSA.'
 
 import argparse
 
