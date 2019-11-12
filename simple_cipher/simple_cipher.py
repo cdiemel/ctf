@@ -111,14 +111,14 @@ class simple_cipher:
 ## This next section makes the script
 ## both runnable and able to be included
 
-def no_run(cipher):
+def not_included(cipher):
     simp_ciph = simple_cipher(cipher)
     simp_ciph.decrypt()
 
 ## this checks to see if we
 ## calling the file directly
 if sys.argv[0] == __file__ and len(sys.argv) == 2:
-    no_run(sys.argv[1])
+    not_included(sys.argv[1])
     
     
 # {   'caesar':{
