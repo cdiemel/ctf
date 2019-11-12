@@ -45,31 +45,7 @@ class simple_cipher:
             c_class.decrypt(self._cipher)
         
             print(c_class._decryptions)
-        
-        # named_tuple = time.localtime() # get struct_time
-        # time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
-        # self.logger.info("### %s" %time_string)
-        # self.logger.info("### %s" %self._cipher)
-        # 
-        # self._decrypt_caesar(self._cipher)
-        # self._decrypt_railfence(self._cipher)
-        # self._check_dictionary(self._caesar, self._railfence)
-    
-    # def _decrypt_caesar(self, ciph):
-    #     self.logger.info("### Caesar Cipher ###")
-    #     for c_key in range(1,26,1):
-    #         c_decrypt = Caesar(c_key).decipher(ciph,True)
-    #         self._caesar.append(c_decrypt)
-    #         print("%s: %s" %(c_key,c_decrypt))
-    #         self.logger.info("%s: %s" %(c_key,c_decrypt))
-    # 
-    # def _decrypt_railfence(self, ciph):
-    #     self.logger.info("### RailFence Cipher ###")
-    #     for rf_key in range(2,ceil(len(ciph)/2)+1,1):
-    #         rf_decrypt = Railfence(rf_key).decipher(ciph,True)
-    #         self._railfence.append(rf_decrypt)
-    #         print("%s: %s" %(rf_key,rf_decrypt))
-    #         self.logger.info("%s: %s" %(rf_key,rf_decrypt))
+
             
     def _set_cipher(self, ciph):
         self._cipher = ciph
