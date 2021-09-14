@@ -16,9 +16,9 @@ parser.add_argument('--verbose', '-v', action='count', default=0, help="Set verb
 parser.add_argument("cipher", help="Cipher to be decoded")
 
 args = parser.parse_args()
-print(args)
-print(args.verbose)
-print(args.cipher)
+# print(args)
+# print(args.verbose)
+# print(args.cipher)
 
 simp_ciph = simple_cypher.simple_cypher(args.cipher,args.verbose)
 simp_ciph.decrypt() 

@@ -24,6 +24,7 @@ class SimpleAtbash:
         a_key = 0
         a_decrypt = Atbash().decipher(cipher,True)
         self._decryptions.append((a_key,a_decrypt))
+        # -v -v +
         if self._verbosity > 2:
                 print("%s: %s" %((a_key+1),a_decrypt))
         self.logger.info("%s: %s" %(a_key,a_decrypt))

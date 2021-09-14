@@ -24,6 +24,7 @@ class SimpleCaesar:
         for c_key in range(0,26,1):
             c_decrypt = Caesar(c_key).decipher(cipher,True)
             self._decryptions.append((c_key,c_decrypt))
+            # -v -v +
             if self._verbosity > 2:
                 print("%s: %s" %((c_key+1),c_decrypt))
             self.logger.info("%s: %s" %(c_key,c_decrypt))

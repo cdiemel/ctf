@@ -50,9 +50,13 @@ class simple_cypher:
     def decrypt(self):
         # print(self._c_classes)
         self.logger.info("### Beginning Simple_Cipher")
-        print("### Beginning Simple_Cipher")
+        # -v +
+        if self._verbosity > 0:
+            print("### Beginning Simple_Cipher")
         for name in self._c_classes:
-            print("\n" + name)
+            # -v +
+            if self._verbosity > 0:
+                print("\n" + name)
             cipher = self._c_classes[name]
             c_class = cipher['class'](self.logger)
             # print(c_class)
@@ -61,6 +65,8 @@ class simple_cypher:
         
             # print(c_class._decryptions)
             self._check_dictionary(c_class._decryptions)
+        
+        self._print_probability(self._prob)
             
     def _set_cipher(self, ciph):
         self._cipher = ciph
@@ -89,7 +95,7 @@ class simple_cypher:
         pass
     
     def _check_dictionary(self, *args):
-        self._prob = {}
+        # self._prob = {}
         for ptext in args[0]:
             decrypted_text = ptext[1]
             for word in re.split('(\W+)',decrypted_text):
@@ -102,7 +108,7 @@ class simple_cypher:
                     self._prob[decrypted_text]["percent"] = round(self._prob[decrypted_text]["percent"] + (len(word)/len(decrypted_text.replace(" ", ""))*100),2)
                     self._prob[decrypted_text]["words"]   = self._prob[decrypted_text]["words"] + (word,)
         
-        self._print_probability(self._prob)
+        # self._print_probability(self._prob)
     
     def _print_probability(self, tmpset):
         
