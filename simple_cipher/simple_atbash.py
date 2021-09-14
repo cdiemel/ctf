@@ -10,16 +10,22 @@ from pycipher import Atbash
 class SimpleAtbash:
     
     _decryptions = []
+    _verbosity = 0
     
     def __init__(self, logger):
         self.logger = logger
+        pass
+    
+    def set_verbosity(self, verbosity):
+        self._verbosity = verbosity
         pass
     
     def decrypt(self, cipher):
         a_key = 0
         a_decrypt = Atbash().decipher(cipher,True)
         self._decryptions.append((a_key,a_decrypt))
-        print("%s: %s" %((a_key+1),a_decrypt))
+        if self._verbosity > 2:
+                print("%s: %s" %((a_key+1),a_decrypt))
         self.logger.info("%s: %s" %(a_key,a_decrypt))
             
         pass

@@ -11,9 +11,14 @@ from pycipher import Railfence
 class SimpleRailFence:
     
     _decryptions = []
+    _verbosity = 0
     
     def __init__(self, logger):
         self.logger = logger
+        pass
+    
+    def set_verbosity(self, verbosity):
+        self._verbosity = verbosity
         pass
     
     def decrypt(self, cipher):
@@ -21,7 +26,8 @@ class SimpleRailFence:
         for rf_key in range(2,ceil(len(cipher)/2)+1,1):
             rf_decrypt = Railfence(rf_key).decipher(cipher,True)
             self._decryptions.append((rf_key,rf_decrypt))
-            print("%s: %s" %((rf_key-1),rf_decrypt))
+            if self._verbosity > 2:
+                print("%s: %s" %((rf_key-1),rf_decrypt))
             self.logger.info("%s: %s" %(rf_key,rf_decrypt))
             
         pass

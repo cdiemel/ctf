@@ -11,9 +11,14 @@ import binascii
 class SimpleEncoding:
     
     _decryptions = []
+    _verbosity = 0
     
     def __init__(self, logger):
         self.logger = logger
+        pass
+    
+    def set_verbosity(self, verbosity):
+        self._verbosity = verbosity
         pass
     
     def decrypt(self, cipher):
@@ -29,7 +34,8 @@ class SimpleEncoding:
         try:
             b64_decrypt = str(base64.b64decode(cipher),"utf-8")
             self._decryptions.append((b64_key,b64_decrypt))
-            print("%s: %s" %((b64_key+1),b64_decrypt))
+            if self._verbosity > 2:
+                print("%s: %s" %((b64_key+1),b64_decrypt))
             self.logger.info("%s: %s" %(b64_key,b64_decrypt))
         except BaseException:
             print("**Not base64\n")
@@ -42,7 +48,8 @@ class SimpleEncoding:
         try:
             hex_decrypt = str(binascii.unhexlify(cipher[2:]),"utf-8")
             self._decryptions.append((hex_key,hex_decrypt))
-            print("%s: %s" %((hex_key+1),hex_decrypt))
+            if self._verbosity > 2:
+                print("%s: %s" %((hex_key+1),hex_decrypt))
             self.logger.info("%s: %s" %(hex_key,hex_decrypt))
         except BaseException:
             print("**Not hex\n")
@@ -56,7 +63,8 @@ class SimpleEncoding:
             cipher_2 = cipher.replace(' ','')
             binary_decrypt = str(binascii.unhexlify('%x' % int(cipher_2,2)),"utf-8")
             self._decryptions.append((binary_key,binary_decrypt))
-            print("%s: %s" %((binary_key+1),binary_decrypt))
+            if self._verbosity > 2:
+                print("%s: %s" %((binary_key+1),binary_decrypt))
             self.logger.info("%s: %s" %(binary_key,binary_decrypt))
         except BaseException:
             print("**Not binary\n")

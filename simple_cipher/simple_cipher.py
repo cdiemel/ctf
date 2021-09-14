@@ -29,8 +29,10 @@ class simple_cipher:
     _railfence  = []
     _prob       = {}
     _c_classes  = {}
+    _verbosity  = 0
     
-    def __init__(self, cipher):
+    def __init__(self, cipher, verbosity=0):
+        self._verbosity = verbosity
         self._set_cipher(cipher)
         self._setup_logger()
         self._setup_dictionary()
@@ -54,6 +56,7 @@ class simple_cipher:
             cipher = self._c_classes[name]
             c_class = cipher['class'](self.logger)
             # print(c_class)
+            c_class.set_verbosity(self._verbosity)
             c_class.decrypt(self._cipher)
         
             # print(c_class._decryptions)
