@@ -10,6 +10,7 @@ import sys
 import re
 import logging
 import time
+import os
 from datetime import datetime
 # from pycipher import Caesar
 # from pycipher import Railfence
@@ -68,9 +69,12 @@ class simple_cipher:
         return self.logger
         
     def _setup_logger(self):
+        # if ! logs folder, create one
+        None if os.path.isdir('logs') else os.mkdir('logs')
+
         dateTimeObj = datetime.now()
         timestampStr = dateTimeObj.strftime("%Y%m%d.%H%M.%S")
-        logging.basicConfig(filename="simple_cipher."+timestampStr+".log", filemode='a', format='%(levelname)s:%(message)s', level=logging.INFO)
+        logging.basicConfig(filename="logs/simple_cipher."+timestampStr+".log", filemode='a', format='%(levelname)s:%(message)s', level=logging.INFO)
         self.logger = logging.getLogger("simple_cipher")
         self.logger.info("Arguments:\n\n"+str(sys.argv)+"\n")
         return self.logger
@@ -125,25 +129,3 @@ def not_included(cipher):
 if sys.argv[0] == __name__ and len(sys.argv) == 2:
     print("not included")
     not_included(sys.argv[1])
-    
-    
-# {   'caesar':{
-#             'decrypt':[
-#                     ('1','abc123'),
-#                     ('2','acb321')],
-#             'dict':[
-#                     ('5','abc123'),
-#                     ('1','cba321')
-#                     ]
-#             },
-#     'railfence':{
-#             'decrypt':[
-#                     ('1','abc123'),
-#                     ('2','acb321')
-#                     ],
-#             'dict':[
-#                     ('5','abc123'),
-#                     ('1','cba321')
-#                     ]
-#             }
-# }
