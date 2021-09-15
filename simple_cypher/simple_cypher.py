@@ -36,7 +36,7 @@ class simple_cypher:
         self._set_cipher(cipher)
         self._setup_logger()
         self._setup_dictionary()
-        self._add_cipher(SimpleCaesar, 'Caesar')
+        self._add_cipher(SimpleCaesar, 'Caesar') 
         self._add_cipher(SimpleRailFence, 'RailFence')
         self._add_cipher(SimpleAtbash, 'Atbash')
         self._add_cipher(SimpleEncoding, 'Encoding')
@@ -65,8 +65,8 @@ class simple_cypher:
         
             # print(c_class._decryptions)
             self._check_dictionary(c_class._decryptions)
-        
-        self._print_probability(self._prob)
+        if self._verbosity < 4:
+            self._print_probability(self._prob)
             
     def _set_cipher(self, ciph):
         self._cipher = ciph
@@ -95,7 +95,8 @@ class simple_cypher:
         pass
     
     def _check_dictionary(self, *args):
-        # self._prob = {}
+        if self._verbosity > 3:
+            self._prob = {}
         for ptext in args[0]:
             decrypted_text = ptext[1]
             for word in re.split('(\W+)',decrypted_text):
@@ -107,11 +108,15 @@ class simple_cypher:
                     self._prob[decrypted_text]["count"]   = self._prob[decrypted_text]["count"] + 1
                     self._prob[decrypted_text]["percent"] = round(self._prob[decrypted_text]["percent"] + (len(word)/len(decrypted_text.replace(" ", ""))*100),2)
                     self._prob[decrypted_text]["words"]   = self._prob[decrypted_text]["words"] + (word,)
-        
-        # self._print_probability(self._prob)
+        if self._verbosity > 3:
+            self._print_probability(self._prob)
     
     def _print_probability(self, tmpset):
-        
+        green = u'\u001b[32m'
+        yellow = u'\u001b[33m'
+        red = u'\u001b[31m'
+        reset = u'\u001b[0m'
+
         print("\n### Results ###")
         self.logger.info("\n### Results ###")
         
@@ -121,8 +126,15 @@ class simple_cypher:
             return
         
         for key in tmpset:
-            print(key)
-            print("%s%% - %s - %s\n" %(tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"]))
+            color = red
+            if tmpset[key]["percent"] > 60:
+                color = green
+            elif tmpset[key]["percent"] > 30:
+                color = yellow
+            print(color+key+reset)
+            print("%s %s%% - %s - %s %s" %(color,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
+            # print("{:s} {:s}% - {:s} - {:s} {:s}\n" %(green,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
+            print(reset)
             self.logger.critical("  %s%% - %s - %s\nRotation: %s\n%s\n" %(tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],tmpset[key]["rotation"],key))
             # self.logger.info("%s  -  %s" %(tmpset[key],key))
 
