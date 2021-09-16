@@ -127,14 +127,19 @@ class simple_cypher:
         
         for key in tmpset:
             color = red
-            if tmpset[key]["percent"] > 60:
+            if tmpset[key]["percent"] > 65:
                 color = green
             elif tmpset[key]["percent"] > 30:
                 color = yellow
             print(color+key+reset)
             print("%s %s%% - %s - %s %s" %(color,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
-            # print("{:s} {:s}% - {:s} - {:s} {:s}\n" %(green,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
-            print(reset)
+            graph_char_count = round(tmpset[key]["percent"]/5)
+            graph_chars = "#"*graph_char_count
+            r = graph_chars[0:6]
+            y = graph_chars[6:12]
+            g = graph_chars[12:20]
+            print("[{}{:6s}{}{:6s}{}{:8s}{}]{}%".format(red,r,yellow,y,green,g,reset,tmpset[key]["percent"]))
+            
             self.logger.critical("  %s%% - %s - %s\nRotation: %s\n%s\n" %(tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],tmpset[key]["rotation"],key))
             # self.logger.info("%s  -  %s" %(tmpset[key],key))
 
