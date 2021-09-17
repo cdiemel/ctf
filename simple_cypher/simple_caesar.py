@@ -1,11 +1,15 @@
 __author__ = 'C. Diemel'
-__version__ = '1.0.0'
+__version__ = '1.3.0'
 __name__ = 'simple_caesar.py'
 __license__ = 'GPL2'
 __description__ = 'Caesar Cipher include for simple_cipher.'
 
 from pycipher import Caesar
 
+## this checks to see if we
+## calling the file directly
+if sys.argv[0] == __name__:
+    exit()
 
 class SimpleCaesar:
     

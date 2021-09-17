@@ -7,6 +7,10 @@ __description__ = 'Simple encoding include for simple_cipher.'
 import base64
 import binascii
 
+## this checks to see if we
+## calling the file directly
+if sys.argv[0] == __name__:
+    exit()
 
 class SimpleEncoding:
     

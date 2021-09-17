@@ -6,7 +6,11 @@ __description__ = 'Atbash Cipher include for simple_cipher.'
 
 from pycipher import Atbash
 
-
+## this checks to see if we
+## calling the file directly
+if sys.argv[0] == __name__:
+    exit()
+    
 class SimpleAtbash:
     
     _decryptions = []
