@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 __author__ = 'C. Diemel'
 __version__ = '1.0.0'
-__name__ = 'add.py'
+__name__ = 'hidden_add.py'
 __license__ = 'GPL2'
 __description__ = 'Read from cli, eval, print.'
 

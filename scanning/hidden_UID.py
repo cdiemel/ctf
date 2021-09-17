@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 __author__ = 'C. Diemel'
 __version__ = '1.0.0'
-__name__ = 'simple_caesar.py'
+__name__ = 'hidden_UID.py'
 __license__ = 'GPL2'
 __description__ = 'autoconnect to remote port, fuzz UID value'
 
