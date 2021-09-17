@@ -4,6 +4,7 @@ __name__ = 'simple_railfence.py'
 __license__ = 'GPL2'
 __description__ = 'RailFence include for simple_cipher.'
 
+import sys
 from math import ceil
 from pycipher import Railfence
 

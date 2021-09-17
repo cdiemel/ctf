@@ -4,6 +4,7 @@ __name__ = 'simple_encoding.py'
 __license__ = 'GPL2'
 __description__ = 'Simple encoding include for simple_cipher.'
 
+import sys
 import base64
 import binascii
 

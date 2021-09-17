@@ -4,6 +4,7 @@ __name__ = 'simple_caesar.py'
 __license__ = 'GPL2'
 __description__ = 'Caesar Cipher include for simple_cipher.'
 
+import sys
 from pycipher import Caesar
 
 ## this checks to see if we

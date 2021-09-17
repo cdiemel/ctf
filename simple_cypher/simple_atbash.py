@@ -4,6 +4,7 @@ __name__ = 'simple_atbash.py'
 __license__ = 'GPL2'
 __description__ = 'Atbash Cipher include for simple_cipher.'
 
+import sys
 from pycipher import Atbash
 
 ## this checks to see if we

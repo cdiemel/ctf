@@ -4,6 +4,7 @@ __name__ = 'cli.py'
 __license__ = 'GPL2'
 __description__ = 'CLI interface for Simple Cypher.'
 
+import os
 import sys
 import simple_cypher
 from cmd import Cmd
@@ -27,6 +28,12 @@ class Cypher_Prompt(Cmd):
     def do_decode(self,args):
         simp_ciph = simple_cypher.simple_cypher(args,4)
         simp_ciph.decrypt()
+    
+    def do_decode_external(self,args):
+        cipher = "iveghny ynxr"
+        verbosity = 2
+        os.system('xfce4-terminal -H -x python3 simple_cypher.py {:s} "{:s}"'.format(" -v"*verbosity,cipher))
+        # os.system('xfce4-terminal -H -x python3 {:s}/simple_cypher.py -v -v -v -v "iveghny ynxr"'.format(os.getcwd())
         
     ## Catch all
     def default(self, args):
@@ -53,5 +60,5 @@ cp.cmdloop()
 # choose pop up external terminal
 # - xterm
 # - terminator
-# - xfce-terminal
+# - xfce4-terminal
 # xfce4-terminal -H -x nmap -sn 192.168.1.1
