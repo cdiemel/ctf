@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 __author__ = 'C. Diemel'
-__version__ = '1.3.0'
+__version__ = '2.3.0'
 __name__ = 'simple_cipher.py'
 __license__ = 'GPL2'
 __description__ = 'Script to attempt to decode simple text ciphers. Caesar, RailFence, etc.'
 
 
-import sys
-import re
-import logging
-import time
 import os
+import re
+import sys
+import time
+import logging
+import argparse
 from datetime import datetime
-# from pycipher import Caesar
-# from pycipher import Railfence
 from simple_caesar import SimpleCaesar
 from simple_railfence import SimpleRailFence
 from simple_atbash import SimpleAtbash
@@ -143,15 +142,18 @@ class simple_cypher:
             self.logger.critical("  %s%% - %s - %s\nRotation: %s\n%s\n" %(tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],tmpset[key]["rotation"],key))
             # self.logger.info("%s  -  %s" %(tmpset[key],key))
 
-## This next section makes the script
-## both runnable and able to be included
 
-def not_included(cipher):
-    simp_ciph = simple_cypher(cipher)
+# ## this checks to see if we
+# ## calling the file directly
+if sys.argv[0] == __name__:
+    # Parse cli arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--verbose', '-v', action='count', default=0, help="Set verbosity level")
+    parser.add_argument("cipher", help="Cipher to be decoded")
+    
+    args = parser.parse_args()
+    
+    simp_ciph = simple_cypher(args.cipher,args.verbose)
     simp_ciph.decrypt()
 
-## this checks to see if we
-## calling the file directly
-if sys.argv[0] == __name__ and len(sys.argv) == 2:
-    print("not included")
-    not_included(sys.argv[1])
+
