@@ -12,11 +12,14 @@ import sys
 import time
 import logging
 import argparse
+import pyperclip
 from datetime import datetime
 from simple_caesar import SimpleCaesar
+from simple_vigenere import SimpleVigenere
 from simple_railfence import SimpleRailFence
 from simple_atbash import SimpleAtbash
 from simple_encoding import SimpleEncoding
+from simple_morse import SimpleMorse
 
 ## TODO:  Add dictionary support
 
@@ -30,20 +33,24 @@ class simple_cypher:
     _c_classes  = {}
     _verbosity  = 0
     
-    def __init__(self, cipher, verbosity=0):
+    def __init__(self, cipher, key, verbosity=0):
         self._verbosity = verbosity
         self._set_cipher(cipher)
         self._setup_logger()
         self._setup_dictionary()
-        self._add_cipher(SimpleCaesar, 'Caesar') 
-        self._add_cipher(SimpleRailFence, 'RailFence')
-        self._add_cipher(SimpleAtbash, 'Atbash')
-        self._add_cipher(SimpleEncoding, 'Encoding')
+        self._add_cipher(SimpleCaesar, 'Caesar', 0)
+        self._add_cipher(SimpleRailFence, 'RailFence', 0)
+        self._add_cipher(SimpleAtbash, 'Atbash', 0)
+        self._add_cipher(SimpleEncoding, 'Encoding', 0)
+        self._add_cipher(SimpleMorse, 'Morse Code', 0)
+        if key:
+            self._set_key(key)
+            self._add_cipher(SimpleVigenere, 'Vigenere', 1)
         return
     
-    def _add_cipher(self, cipher, label):
+    def _add_cipher(self, cipher, label, key_bool):
         # self._c_classes[lable] = {'class':cipher, 'decrypt':None, 'dict':None}
-        self._c_classes[label] = {'class':cipher, 'dict':None}
+        self._c_classes[label] = {'class':cipher, 'has_key':key_bool, 'dict':None}
         return
     
     def decrypt(self):
@@ -60,7 +67,10 @@ class simple_cypher:
             c_class = cipher['class'](self.logger)
             # print(c_class)
             c_class.set_verbosity(self._verbosity)
-            c_class.decrypt(self._cipher)
+            if cipher['has_key']:
+                c_class.decrypt(self._cipher,self._key)
+            else:
+                c_class.decrypt(self._cipher)
         
             # print(c_class._decryptions)
             self._check_dictionary(c_class._decryptions)
@@ -69,6 +79,9 @@ class simple_cypher:
             
     def _set_cipher(self, ciph):
         self._cipher = ciph
+        
+    def _set_key(self, key):
+        self._key = key
     
     def get_cipher(self):
         return self._cipher
@@ -124,6 +137,9 @@ class simple_cypher:
             self.logger.info(" ** NONE **")
             return
         
+        cur_max_percent = 0
+        cur_max_key = ""
+        
         for key in tmpset:
             color = red
             if tmpset[key]["percent"] > 65:
@@ -131,6 +147,11 @@ class simple_cypher:
             elif tmpset[key]["percent"] > 30:
                 color = yellow
             print(color+key+reset)
+            
+            if tmpset[key]["percent"] > cur_max_percent:
+                cur_max_percent = tmpset[key]["percent"]
+                cur_max_key = key
+                
             print("%s %s%% - %s - %s %s" %(color,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
             graph_char_count = round(tmpset[key]["percent"]/5)
             graph_chars = "#"*graph_char_count
@@ -142,6 +163,8 @@ class simple_cypher:
             self.logger.critical("  %s%% - %s - %s\nRotation: %s\n%s\n" %(tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],tmpset[key]["rotation"],key))
             # self.logger.info("%s  -  %s" %(tmpset[key],key))
 
+        pyperclip.copy(key)
+        time.sleep(1)
 
 # ## this checks to see if we
 # ## calling the file directly
@@ -149,11 +172,20 @@ if sys.argv[0] == __name__:
     # Parse cli arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--verbose', '-v', action='count', default=0, help="Set verbosity level")
-    parser.add_argument("cipher", help="Cipher to be decoded")
+    parser.add_argument('--key', '-k', action='store', help="Decipher key")
+    p_group = parser.add_mutually_exclusive_group(required=True)
+    p_group.add_argument('--clipboard', '-c', action='store_const', default=0, const=1, help="Copy from/to clipboard")
+    p_group.add_argument("cipher", nargs='?', help="Cipher to be decoded")
     
     args = parser.parse_args()
     
-    simp_ciph = simple_cypher(args.cipher,args.verbose)
+    ## copy from clipboard
+    if args.clipboard:
+        args.cipher = pyperclip.paste()
+    
+    print(args)
+    
+    simp_ciph = simple_cypher(args.cipher,args.key,args.verbose)
     simp_ciph.decrypt()
 
 
