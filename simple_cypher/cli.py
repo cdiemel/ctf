@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 __author__ = 'C. Diemel'
 __version__ = '2.0.0'
 __name__ = 'cli.py'
