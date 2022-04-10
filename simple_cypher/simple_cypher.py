@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 __author__ = 'C. Diemel'
 __version__ = '2.3.0'
 __name__ = 'simple_cypher.py'
@@ -166,26 +167,24 @@ class simple_cypher:
         pyperclip.copy(key)
         time.sleep(1)
 
-# ## this checks to see if we
-# ## calling the file directly
-if sys.argv[0] == __name__:
-    # Parse cli arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--verbose', '-v', action='count', default=0, help="Set verbosity level")
-    parser.add_argument('--key', '-k', action='store', help="Decipher key")
-    p_group = parser.add_mutually_exclusive_group(required=True)
-    p_group.add_argument('--clipboard', '-c', action='store_const', default=0, const=1, help="Copy from/to clipboard")
-    p_group.add_argument("cipher", nargs='?', help="Cipher to be decoded")
-    
-    args = parser.parse_args()
-    
-    ## copy from clipboard
-    if args.clipboard:
-        args.cipher = pyperclip.paste()
-    
-    print(args)
-    
-    simp_ciph = simple_cypher(args.cipher,args.key,args.verbose)
-    simp_ciph.decrypt()
+
+# Parse cli arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('--verbose', '-v', action='count', default=0, help="Set verbosity level")
+parser.add_argument('--key', '-k', action='store', help="Decipher key")
+p_group = parser.add_mutually_exclusive_group(required=True)
+p_group.add_argument('--clipboard', '-c', action='store_const', default=0, const=1, help="Copy from/to clipboard")
+p_group.add_argument("cipher", nargs='?', help="Cipher to be decoded")
+
+args = parser.parse_args()
+
+## copy from clipboard
+if args.clipboard:
+    args.cipher = pyperclip.paste()
+
+print(args)
+
+simp_ciph = simple_cypher(args.cipher,args.key,args.verbose)
+simp_ciph.decrypt()
 
 
