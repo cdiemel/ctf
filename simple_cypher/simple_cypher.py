@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 __author__ = 'C. Diemel'
-__version__ = '2.3.0'
+__version__ = '2.4.0'
 __name__ = 'simple_cypher.py'
 __license__ = 'GPL2'
 __description__ = 'Script to attempt to decode simple text ciphers. Caesar, RailFence, etc.'
