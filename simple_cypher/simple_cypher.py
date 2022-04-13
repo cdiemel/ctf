@@ -105,7 +105,6 @@ class simple_cypher:
         if not filename:
             filename = "/usr/share/dict/american-english"
         self._dictionary = set(str.lower(line.strip()) for line in open(filename))
-        pass
     
     def _check_dictionary(self, *args):
         if self._verbosity > 3:

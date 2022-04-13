@@ -20,18 +20,14 @@ class SimpleEncoding:
     
     def __init__(self, logger):
         self.logger = logger
-        pass
     
     def set_verbosity(self, verbosity):
         self._verbosity = verbosity
-        pass 
     
     def decrypt(self, cipher):
         self.base64(cipher)
         self.hex(cipher)
         self.binary(cipher)
-            
-        pass
     
     def base64(self, cipher):
         # -v -v +
@@ -49,8 +45,6 @@ class SimpleEncoding:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not base64\n")
-        
-        pass
     
     def hex(self, cipher):
         # -v -v +
@@ -68,8 +62,6 @@ class SimpleEncoding:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not hex\n")
-        
-        pass
     
     def binary(self, cipher):
         # -v -v +
@@ -88,8 +80,6 @@ class SimpleEncoding:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not binary\n")
-        
-        pass
     
     def encrypt(self):
         pass

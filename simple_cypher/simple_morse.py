@@ -133,11 +133,9 @@ class SimpleMorse:
 
     def __init__(self, logger):
         self.logger = logger
-        pass
     
     def set_verbosity(self, verbosity):
         self._verbosity = verbosity
-        pass 
     
     def decrypt(self, cipher):
         morse_words = cipher.split("/")

@@ -22,11 +22,9 @@ class SimpleVigenere:
     
     def __init__(self, logger):
         self.logger = logger
-        pass
     
     def set_verbosity(self, verbosity):
         self._verbosity = verbosity
-        pass 
     
     def decrypt(self, cipher, key):
         vigenere_key = 0
@@ -51,8 +49,6 @@ class SimpleVigenere:
         if self._verbosity > 2:
             print("%s: %s" %((vigenere_key+1),v_decrypt))
         self.logger.info("%s: %s" %(vigenere_key,v_decrypt))
-            
-        pass
     
     def decode_char(self,charset,cipher_char,key_char):
         k_index     = charset.find(key_char)
