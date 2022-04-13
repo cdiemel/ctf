@@ -1,7 +1,19 @@
-# Simple Cipher
+Simple Cypher
+============
+
+Author: Casey Diemel
+@cdiemel
+
+------------
+
+Python based deciphering tool for National Cyber League competition. 
+
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Python 3.7](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-370/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cdiemel/ctf.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cdiemel/ctf/context:python)
+
 
 ## Description
-Python based deciphering tool for National Cyber League competition. 
 
 After running through all permutations, checks each permutation against english dictionary for words 3 characters or larger. Then calculates percentage of characters that are words and provides estimation of "correctness" of decipherment. 
 
@@ -101,14 +113,9 @@ You should just be able to clone and run as long at pycipher is installed.
 I am currently working on this project intermitently as needed to improve my design.  Eventually I am hoping include a full menu system with colored markup.
 
 ## Support
-No support is being offered at this time.  The project works for me however, YMMV.
+The project works for me however, YMMV.
 
 ## Contributing
-No contributions being accepted at this time.  
-
-However, feel free to clone and improve. =)
-
-## License
-For open source projects, say how it is licensed.
+Needs to be completed
 
 
