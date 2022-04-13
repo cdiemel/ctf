@@ -19,11 +19,9 @@ class SimpleCaesar:
     
     def __init__(self, logger):
         self.logger = logger
-        pass
     
     def set_verbosity(self, verbosity):
         self._verbosity = verbosity
-        pass 
     
     def decrypt(self, cipher):
         for c_key in range(0,26,1):
@@ -34,7 +32,6 @@ class SimpleCaesar:
                 print("%s: %s" %((c_key+1),c_decrypt))
             self.logger.info("%s: %s" %(c_key,c_decrypt))
             
-        pass
     
     def encrypt(self):
         pass
