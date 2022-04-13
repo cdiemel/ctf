@@ -19,11 +19,9 @@ class SimpleAtbash:
     
     def __init__(self, logger):
         self.logger = logger
-        pass
     
     def set_verbosity(self, verbosity):
         self._verbosity = verbosity
-        pass 
     
     def decrypt(self, cipher):
         a_key = 0
@@ -34,7 +32,6 @@ class SimpleAtbash:
                 print("%s: %s" %((a_key+1),a_decrypt))
         self.logger.info("%s: %s" %(a_key,a_decrypt))
             
-        pass
     
     def encrypt(self):
         pass
