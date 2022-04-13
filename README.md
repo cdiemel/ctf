@@ -1,5 +1,4 @@
 Capture The Flag Scripts
-Simple Cypher
 ============
 
 Author: Casey Diemel
