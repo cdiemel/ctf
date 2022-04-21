@@ -25,5 +25,5 @@
 # 'J'	0.10
 # 'Z'	0.07
 
-
-order_en-us = ['E','T','A','O','I','N','S','R','H','D','L','U','C','M','F','Y','W','G','P','B','V','K','X','Q','J','Z',]
+## The order of most common letters in the english language
+#order_en-us = ['E','T','A','O','I','N','S','R','H','D','L','U','C','M','F','Y','W','G','P','B','V','K','X','Q','J','Z',]
