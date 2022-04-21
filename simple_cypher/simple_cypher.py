@@ -138,7 +138,7 @@ class simple_cypher:
             return
         
         cur_max_percent = 0
-        cur_max_key = ""
+        #cur_max_key = ""
         
         for key in tmpset:
             color = red
@@ -150,7 +150,7 @@ class simple_cypher:
             
             if tmpset[key]["percent"] > cur_max_percent:
                 cur_max_percent = tmpset[key]["percent"]
-                cur_max_key = key
+                #cur_max_key = key
                 
             print("%s %s%% - %s - %s %s" %(color,tmpset[key]["percent"],tmpset[key]["count"],tmpset[key]["words"],reset))
             graph_char_count = round(tmpset[key]["percent"]/5)
