@@ -6,7 +6,7 @@ __license__ = 'GPL2'
 __description__ = 'CLI interface for Simple Cypher.'
 
 import os
-import sys
+# import sys
 import simple_cypher
 from cmd import Cmd
 
