@@ -7,9 +7,9 @@ __description__ = 'autoconnect to remote port, fuzz UID value'
 
 
 import logging
-import time
+# import time
 import socket
-import sys
+# import sys
 import math
 import argparse
 
