@@ -21,7 +21,7 @@ print(vars(args))
 
 
 import math
-import sys
+# import sys
 def extended_euclidean_algorithm(a, b):
     """
     Returns a three-tuple (gcd, x, y) such that
