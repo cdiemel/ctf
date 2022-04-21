@@ -41,7 +41,8 @@ class SimpleEncoding:
             if self._verbosity > 2:
                 print("%s: %s" %((b64_key+1),b64_decrypt))
             self.logger.info("%s: %s" %(b64_key,b64_decrypt))
-        except BaseException:
+        # except BaseException:
+        except binascii.Error:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not base64\n")
@@ -58,7 +59,8 @@ class SimpleEncoding:
             if self._verbosity > 2:
                 print("%s: %s" %((hex_key+1),hex_decrypt))
             self.logger.info("%s: %s" %(hex_key,hex_decrypt))
-        except BaseException:
+        # except BaseException:
+        except binascii.Error:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not hex\n")
@@ -76,7 +78,8 @@ class SimpleEncoding:
             if self._verbosity > 2:
                 print("%s: %s" %((binary_key+1),binary_decrypt))
             self.logger.info("%s: %s" %(binary_key,binary_decrypt))
-        except BaseException:
+        # except BaseException:
+        except binascii.Error:
             # -v -v +
             if self._verbosity > 2:
                 print("**Not binary\n")
