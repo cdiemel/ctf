@@ -4,10 +4,10 @@ __name__ = 'simple_vigenere.py'
 __license__ = 'GPL2'
 __description__ = 'Vigenere Cipher include for simple_cipher.'
 
-import re
+#import re
 import sys
 import math
-from pycipher import Vigenere
+#from pycipher import Vigenere
 
 ## this checks to see if we
 ## calling the file directly
